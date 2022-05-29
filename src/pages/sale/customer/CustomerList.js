@@ -64,7 +64,7 @@ const CustomerList = () => {
       <CCol xs={12}>
         <CCard className="mb-4">
           <CCardHeader>
-            لیست مشتریان
+            لیست مشتریان-
           </CCardHeader>
           <CCardBody>
             <CButton color='light' size='sm' onClick={()=> navigate('/sale/customers/add')}>
