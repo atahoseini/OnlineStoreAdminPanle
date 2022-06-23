@@ -37,7 +37,7 @@ const CustomerInfo = () => {
     await customerServices.insert(data);
     setTeatsInfo({ title: 'افزودن مشتری جدید انجام شد', text: 'انجام شد', color: 'success' });
     setShowToast(true);
-    setIsLoading(fail);
+    setIsLoading(false);
     //alert('insert success');
     navigate('./')
   }
@@ -58,7 +58,7 @@ const CustomerInfo = () => {
   return (
     <>
       {showToast ? <CustomeToast {...teatsInfo} /> : null}
-      <CRow>
+      <CRow> 
         <CCol xs={12}>
           <CCard className="mb-4">
             <CCardHeader>
@@ -130,7 +130,8 @@ const CustomerInfo = () => {
                 <CCol xs={12}>
                   <CButton type="submit" disabled={isLoading}>
                     {isLoading ? <CSpinner className='ml-2' component="span" size="sm" aria-hidden="true" /> : null }
-                    ذخیره</CButton>
+                    ذخیره 
+                  </CButton>
                 </CCol>
               </CForm>
             </CCardBody>
