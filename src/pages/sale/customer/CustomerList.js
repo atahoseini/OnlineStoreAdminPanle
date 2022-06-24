@@ -11,7 +11,8 @@ import { CustomTable } from 'src/custom-components/custom-grid/CustomTable'
 import { customerServices } from 'src/services/customerService'
 import { useNavigate } from 'react-router-dom';
 import CustomBootstrapTable from 'src/custom-components/custom-grid/CustomBootstrapTable'
-import CIcon from '@coreui/icons-react'
+import  CIcon from '@coreui/icons-react';
+import * as icon from '@coreui/icons';
 import Swal from 'sweetalert2'
 
 const CustomerList = () => {
@@ -57,14 +58,12 @@ const CustomerList = () => {
         formatter: (cellContent, row) => (
           <div>
             <CButton onClick={() => navigate('/sale/customers/edit/' + row.id)} color='light' size="sm" shape="rounded-pill">
-              {/* <CIcon name="cil-pencil" className="me-2" /> */}
-              ویرایش
+              <CIcon icon={icon.cilPencil} size="me-2"/>
             </CButton>
 
             
             <CButton onClick={async () => await removeItem(row.id)} color='danger' size="sm" shape="rounded-pill">
-              {/* <CIcon name="cil-drop" className="me-2" /> */}
-              حذف
+              <CIcon icon={icon.cilDelete} size="me-2"/>
             </CButton>
           </div>
         )

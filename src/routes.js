@@ -58,7 +58,7 @@ const routes = [
   { path: '/sale', name: 'فروش', element: CustomerList , exact: true},
   { path: '/sale/customers', name: 'لیست مشتریان', element: CustomerList , exact: true},
   { path: '/sale/customers/add', name: 'افزودن مشتریان', element: CustomerInfo },
-  { path: '/sale/customers/edit/{id}', name: 'ویرایش مشتریان', element: CustomerInfo },
+  { path: '/sale/customers/edit/:id', name: 'ویرایش مشتریان', element: CustomerInfo },
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', element: Colors },
   { path: '/theme/typography', name: 'Typography', element: Typography },

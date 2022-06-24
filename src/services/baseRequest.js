@@ -47,7 +47,7 @@ export default async function baseRequest(
   try {
     const response = await axios({
       url: `${API}${path}`,
-      method: method === "post" && data ? "POST" : method,
+      method: method,  // method === "post" && data ? "POST" : method,
       headers: method === "get" && data ? { ...headers, "X-HTTP-Method-Override": method.toUpperCase() } : headers,
       cancelToken: source.token,
       data: isFormData ? formData : data,
