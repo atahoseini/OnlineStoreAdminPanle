@@ -37,13 +37,24 @@ const CustomerInfo = () => {
       defaultValues: editCustomer,   
   });
 
-  // const { register, handleSubmit,reset } = useForm({
-  //   defaultValues: customer,
-  // });
+  React.useEffect(async () => {
+    // const resultProvinces= await cityServices.getProvince();
+     setProvinces(await cityServices.getProvince());
+    if(id){
+      getCustomerInfo(id);
+    }
+  }, [])
+
+  const getCustomerInfo = async (id) => {
+     const customer= await customerServices.get(id);
+     await getCities(customer.provinceId);
+     setEditCustomer(customer);
+     reset(editCustomer);
+    }
+
 
   const save = async (data) => {
-
-    setIsLoading(true);
+     setIsLoading(true);
     if(id){
       await customerServices.update(data,id);
       setTeatsInfo({ title: 'بروزرسانی اطلاعات مشتری  انجام شد', text: 'انجام شد', color: 'success' });
@@ -57,24 +68,6 @@ const CustomerInfo = () => {
     //alert('insert success');
     navigate('./')
   }
-
-
-  React.useEffect(async () => {
-    // const resultProvinces= await cityServices.getProvince();
-     setProvinces(await cityServices.getProvince());
-    if(id){
-      getCustomerInfo(id);
-    }
-  }, [])
-
-
-  const getCustomerInfo = async (id) => {
-     const customer= await customerServices.get(id);
-     await getCities(customer.provinceId);
-     setEditCustomer(customer);
-     reset(editCustomer);
-    }
-  
   
   const getCities = async (id) => {
     // alert(id);
@@ -141,7 +134,7 @@ const CustomerInfo = () => {
                 </CCol>
                 <CCol xs={4}>
                   <CFormLabel>ایمیل</CFormLabel>
-                  <CFormInput   {...register("email")} />
+                  <CFormInput defaultValue={editCustomer.email}  {...register("email")} />
                 </CCol>
                 <CCol xs={8}>
                   <CFormLabel>آدرس</CFormLabel>

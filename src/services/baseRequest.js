@@ -13,7 +13,7 @@ export const setToken = _token => {
 
 export default async function baseRequest(
   data,
-  path, 
+  path,
   method,
   needAuthenticated,
   params,
@@ -47,7 +47,7 @@ export default async function baseRequest(
   try {
     const response = await axios({
       url: `${API}${path}`,
-      method: method,  // method === "post" && data ? "POST" : method,
+      method: method === "post" && data ? "POST" : method,
       headers: method === "get" && data ? { ...headers, "X-HTTP-Method-Override": method.toUpperCase() } : headers,
       cancelToken: source.token,
       data: isFormData ? formData : data,
